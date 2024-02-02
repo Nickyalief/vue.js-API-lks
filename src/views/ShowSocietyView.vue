@@ -29,12 +29,16 @@
         <label for="regional_id" class="form-label">Regional ID</label>
         <input type="disabled" name="regional_id" id="regional_id" class="form-control" v-model="society.regional_id" :disabled="true">
       </div>
+      <button @click="navigateToCrud" class="btn btn-secondary mb-4 mx-2">Kembali</button>
   </div>
 </template>
 
 <script setup>
 import useSocieties from '../composable/societies'
 import { onMounted } from 'vue'
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const { getSociety, society } = useSocieties()
 const props = defineProps({
@@ -43,6 +47,10 @@ const props = defineProps({
     type: String
   }
 })
+
+const navigateToCrud = () => {
+  router.push('/user'); // Replace '/crud' with your actual CRUD route path
+};
 
 onMounted(() => getSociety(props.id_society))
 </script>

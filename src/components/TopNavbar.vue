@@ -13,9 +13,9 @@
           <li class="nav-item">
             <router-link to="/contact" class="nav-link active">Contact</router-link>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <router-link to="/user" class="nav-link active">Crud</router-link>
-          </li>
+          </li> -->
           <li class="nav-item">
             <router-link to="/login" class="nav-link active">Login</router-link>
           </li>

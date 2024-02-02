@@ -49,6 +49,7 @@
           {{ errors.regional_id[0] }}
         </div>
       </div>
+      <button @click="navigateToCrud" class="btn btn-secondary mb-4 mx-2">Kembali</button>
       <button type="submit" class="btn btn-primary mb-4">Edit Data</button>
     </form>
   </div>
@@ -58,6 +59,13 @@
 import useSocieties from '../composable/societies'
 import useRegionals from '../composable/regionals'
 import { onMounted, ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const navigateToCrud = () => {
+  router.push('/user'); // Replace '/crud' with your actual CRUD route path
+};
 
 const { errors,  editSocieties, getSociety, society } = useSocieties()
 const genders = ref(['male','female'])

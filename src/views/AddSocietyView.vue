@@ -50,6 +50,7 @@
           {{ errors.regional_id[0] }}
         </div>
       </div>
+      <button @click="navigateToCrud" class="btn btn-secondary mb-4 mx-2">Kembali</button>
       <button type="submit" class="btn btn-primary mb-4">Tambah Data</button>
     </form>
   </div>
@@ -59,6 +60,9 @@
     import useSocieties from '../composable/societies'
     import useRegionals from '../composable/regionals'
     import { onMounted, reactive } from "vue";
+    import { useRouter } from 'vue-router';
+
+const router = useRouter();
     
     const form = reactive({
         id_card_number: '',
@@ -76,6 +80,10 @@
     onMounted(async () => {
       await getRegionalLists()
     })
+
+    const navigateToCrud = () => {
+  router.push('/user'); // Replace '/crud' with your actual CRUD route path
+};
 
     const saveSociety = async () => {
     try {

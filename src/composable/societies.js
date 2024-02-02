@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 
 export default function useSocieties() {
     const url = ref('/society')
+    const authUrl = ref('/auth/login')
     const societies = ref ([])
     const society = ref ([])
     const errors = ref({})
@@ -54,6 +55,16 @@ export default function useSocieties() {
         await http.delete(`${url.value}/${id}`)
     }
 
+    const login = async (credentials) => {
+        try {
+            const response = await http.post(`${authUrl.value}`, credentials);
+            console.log(response.data);
+        } catch (error) {
+            console.error('Login error:', error);
+            throw error; 
+        }
+    }
+
     return {
         societies, 
         society,
@@ -63,5 +74,6 @@ export default function useSocieties() {
         storeSocieties,
         editSocieties,
         destroySocieties,
+        login,
     }
 }
